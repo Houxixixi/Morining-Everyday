@@ -39,7 +39,7 @@ def get_words():
     r = requests.get(url).json()
     content = r['content']
     note = r['note']
-    return content, note
+    return content['weather'],note['note']
 
 
 
