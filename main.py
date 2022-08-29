@@ -39,7 +39,8 @@ def get_words():
    r = requests.get(url)
    content = r.json()['content']
    return content
- def get_words1():
+
+def get_words1():
    url = "http://open.iciba.com/dsapi/"
    r1 = requests.get(url)
    note = r1.json()['note']
@@ -56,7 +57,7 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-content= get_words()
+content = get_words()
 note = get_words1()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":content, "color":get_random_color()}，"words1":{"value":note, "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
