@@ -35,12 +35,10 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-   words = requests.get("http://open.iciba.com/dsapi/")
+   words = "http://open.iciba.com/dsapi/"
    r = requests.get(words).json()
    content = r['content']
    note = r['note']
-   if words.status_code != 200:
-     return get_words()
    return content,note
 
 
