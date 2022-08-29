@@ -39,6 +39,8 @@ def get_words():
    r = requests.get(words).json()
    content = r['content']
    note = r['note']
+   if words.status_code != 200:
+     return get_words()
    return content,note
 
 
