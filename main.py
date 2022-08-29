@@ -35,13 +35,14 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-    conn = http.client.HTTPSConnection('api.tianapi.com') 
-    params = urllib.parse.urlencode({'key':'你的APIKEY'})
-    headers = {'Content-type':'application/x-www-form-urlencoded'}
-    conn.request('POST','/caihongpi/index',params,headers)
-    res = conn.getresponse()
-    words = res.read()
-    return words.decode('utf-8')
+     url = "http://open.iciba.com/dsapi/"
+    r = requests.get(url)
+    content = r.json()['content']
+    note = r.json()['note']
+    return content, note
+
+
+
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
