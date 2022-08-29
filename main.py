@@ -35,7 +35,7 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-     url = "http://open.iciba.com/dsapi/"
+    url = "http://open.iciba.com/dsapi/"
     r = requests.get(url)
     content = r.json()['content']
     note = r.json()['note']
