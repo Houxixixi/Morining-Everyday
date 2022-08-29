@@ -35,10 +35,13 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-  words = requests.get("http://api.tianapi.com/caihongpi/index")
-  if words.status_code != 200:
-    return get_words()
-  return words.json()['data']['text']
+    conn = http.client.HTTPSConnection('api.tianapi.com') 
+    params = urllib.parse.urlencode({'key':'你的APIKEY'})
+    headers = {'Content-type':'application/x-www-form-urlencoded'}
+    conn.request('POST','/caihongpi/index',params,headers)
+    res = conn.getresponse()
+    words = res.read()
+    return words.decode('utf-8')
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
